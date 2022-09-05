@@ -3,7 +3,7 @@ document.querySelectorAll(".drum").forEach(function(element) {
     element.addEventListener("click", function() {
         let buttonInnerHTML = this.innerHTML;
         makeSound(buttonInnerHTML);
-        buttonAnnimation(buttonInnerHTML);
+        buttonAnimation(buttonInnerHTML);
     })
 })
 
@@ -11,7 +11,7 @@ document.querySelectorAll(".drum").forEach(function(element) {
 document.addEventListener("keypress", function(event) {
     let key = event.key;
     makeSound(key);
-    buttonAnnimation(key);
+    buttonAnimation(key);
 })
 
 function makeSound(key) {
@@ -48,4 +48,12 @@ function makeSound(key) {
             console.log(buttonInnerHTML);
             break;
     }
+}
+
+function buttonAnimation(keyLetter) {
+    let activeButton = document.querySelector(`.${keyLetter}`);
+    activeButton.classList.add('pressed');
+    setTimeout(function() {
+        activeButton.classList.remove('pressed');
+    }, 100)
 }
